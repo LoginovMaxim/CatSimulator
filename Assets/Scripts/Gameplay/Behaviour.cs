@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
-namespace Logic
+namespace Gameplay
 {
     public class Behaviour : MonoBehaviour
     {
@@ -24,7 +24,6 @@ namespace Logic
         {
             List<MoodBehaviour> moodBehaviours = ActionBehaviour.MoodBehaviours.Where(m => m.Mood == _cat.Mood).ToList();
             
-            Debug.Log("moodBehaviours " + moodBehaviours.Count);
             if (moodBehaviours.Count == 0)
             {
                 _cat.SetReaction("проигнорировала ваши попытки " + ActionBehaviour.ActionLabel);
@@ -32,7 +31,6 @@ namespace Logic
             }
             
             MoodBehaviour selectedBehaviour = moodBehaviours[Random.Range(0, moodBehaviours.Count)];
-            Debug.Log("selectedBehaviour " + selectedBehaviour.Mood);
             
             _cat.SetReaction(selectedBehaviour.Reaction);
             _cat.SetMood(selectedBehaviour.NextMood);

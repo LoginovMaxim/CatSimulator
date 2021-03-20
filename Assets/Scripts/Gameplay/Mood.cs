@@ -1,4 +1,4 @@
-﻿namespace Logic
+﻿namespace Gameplay
 {
     public enum Mood
     {
