@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
+using Random = UnityEngine.Random;
 
 namespace Logic
 {
@@ -15,21 +17,25 @@ namespace Logic
         
         private void Start()
         {
-            //ActionBehaviour.Actionable = GetComponent<IActionable>();
             _cat = GetComponentInParent<Cat>();
         }
 
         public void DoAction()
         {
-            //ActionBehaviour.Actionable.Action(_cat, this);
-            if (_cat.Mood > ActionBehaviour.MoodBehaviours.Count)
+            List<MoodBehaviour> moodBehaviours = ActionBehaviour.MoodBehaviours.Where(m => m.Mood == _cat.Mood).ToList();
+            
+            Debug.Log("moodBehaviours " + moodBehaviours.Count);
+            if (moodBehaviours.Count == 0)
             {
                 _cat.SetReaction("проигнорировала ваши попытки " + ActionBehaviour.ActionLabel);
                 return;
             }
             
-            _cat.SetReaction(ActionBehaviour.MoodBehaviours[_cat.Mood].Reaction);
-            _cat.SetMood(ActionBehaviour.MoodBehaviours[_cat.Mood].NextMood);
+            MoodBehaviour selectedBehaviour = moodBehaviours[Random.Range(0, moodBehaviours.Count)];
+            Debug.Log("selectedBehaviour " + selectedBehaviour.Mood);
+            
+            _cat.SetReaction(selectedBehaviour.Reaction);
+            _cat.SetMood(selectedBehaviour.NextMood);
             
             OnAction?.Invoke(ActionBehaviour.ActionLabel, _cat.Reaction);
         }
@@ -38,7 +44,6 @@ namespace Logic
     [Serializable]
     public struct ActionBehaviour
     {
-        //public IActionable Actionable;
         public string ActionLabel;
         public List<MoodBehaviour> MoodBehaviours;
     }
@@ -46,7 +51,8 @@ namespace Logic
     [Serializable]
     public struct MoodBehaviour
     {
+        public Mood Mood;
         public string Reaction;
-        public int NextMood;
+        public Mood NextMood;
     }
 }

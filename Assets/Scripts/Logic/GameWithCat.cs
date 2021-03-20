@@ -6,6 +6,7 @@ namespace Logic
     {
         public void Action(Cat cat, Behaviour behaviour)
         {
+            /*
             if (cat.Mood > behaviour.ActionBehaviour.MoodBehaviours.Count)
             {
                 cat.SetReaction("проигнорировала ваши попытки поиграть с ней");
@@ -14,6 +15,7 @@ namespace Logic
             
             cat.SetReaction(behaviour.ActionBehaviour.MoodBehaviours[cat.Mood].Reaction);
             cat.SetMood(behaviour.ActionBehaviour.MoodBehaviours[cat.Mood].NextMood);
+            */
         }
     }
 }
