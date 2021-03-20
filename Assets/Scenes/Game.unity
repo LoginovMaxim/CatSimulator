@@ -12359,6 +12359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3339b79279444d38f39d6ac5a1352fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _slider: {fileID: 2072921688}
   _sliderFillImage: {fileID: 1220567516}
   _handleImage: {fileID: 1908083000}
   _fillDuration: 1

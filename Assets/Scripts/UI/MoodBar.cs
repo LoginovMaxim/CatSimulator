@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    [RequireComponent(typeof(Slider))]
     public class MoodBar : MonoBehaviour
     {
         [Header("Slider params")]
+        [SerializeField] private Slider _slider;
         [SerializeField] private Image _sliderFillImage;
         [SerializeField] private Image _handleImage;
         [SerializeField] private float _fillDuration;
@@ -19,14 +19,11 @@ namespace UI
         [Header("Gameplay")]
         [SerializeField] private Cat _cat;
         [SerializeField] private MoodSpriteData _moodSpriteData;
-
-        private Slider _slider;
         
         private void OnEnable() => _cat.OnMoodChanged += ChangedMood;
 
         private void Start()
         {
-            _slider = GetComponent<Slider>();
             _slider.maxValue = Enum.GetValues(typeof(Mood)).Length;
 
             ChangedMood(_cat.Mood);
