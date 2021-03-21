@@ -7,18 +7,19 @@ using UnityEngine.UI;
 
 public class Loader : MonoBehaviour
 {
-    [SerializeField] private string _nextSceneName;
     [SerializeField] private Slider _slider;
 
-    private void Start()
+    public void LoadSceneByIndex(int index)
     {
-        StartCoroutine(LoadScene());
+        StartCoroutine(LoadingSceneByIndex(index));
     }
-
-    IEnumerator LoadScene()
+    
+    IEnumerator LoadingSceneByIndex(int index)
     {
-        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(_nextSceneName);
+        AsyncOperation asyncOperation = SceneManager.LoadSceneAsync(index);
 
+        _slider.gameObject.SetActive(true);
+        
         while (!asyncOperation.isDone)
         {
             _slider.value = asyncOperation.progress;

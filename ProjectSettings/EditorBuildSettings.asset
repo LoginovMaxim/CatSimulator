@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Load.unity
     guid: 8fe1e911e5c28cf46a53a787b613af28
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/SimpleGame.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/MiddleSimulator.unity
+    guid: a7895ec3d3d731842ae7a91dd3057a05
   m_configObjects: {}

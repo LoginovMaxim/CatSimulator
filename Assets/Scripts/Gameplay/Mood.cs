@@ -4,6 +4,8 @@
     {
         Bad,
         Good,
-        Great
+        Great,
+        Cry,
+        Love
     }
 }

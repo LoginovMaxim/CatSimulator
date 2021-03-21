@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using Gameplay;
 using UnityEngine;
 using UnityEngine.UI;
@@ -19,12 +20,14 @@ namespace UI
         [Header("Gameplay")]
         [SerializeField] private Cat _cat;
         [SerializeField] private MoodSpriteData _moodSpriteData;
+        [SerializeField] private List<Mood> _moodScale;
         
         private void OnEnable() => _cat.OnMoodChanged += ChangedMood;
 
         private void Start()
         {
-            _slider.maxValue = Enum.GetValues(typeof(Mood)).Length;
+            //_slider.maxValue = Enum.GetValues(typeof(Mood)).Length;
+            _slider.maxValue = _moodScale.Count;
 
             ChangedMood(_cat.Mood);
         }
@@ -35,7 +38,7 @@ namespace UI
 
             _handleImage.sprite = _moodSpriteData.GetHandleSprite(mood);
             
-            StartCoroutine(SliderFilling((int)mood + 1));
+            StartCoroutine(SliderFilling(_moodScale.IndexOf(mood) + 1));
         }
 
         private IEnumerator SliderFilling(float value)

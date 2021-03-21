@@ -23,5 +23,8 @@ MonoBehaviour:
     CatSprite: {fileID: -4047135397017936966, guid: 5ae7662cedea583439a80298268c5a2f, type: 3}
     HandleSprite: {fileID: -1029382068908877146, guid: d27973a04c787454e8b0ab91e10447eb, type: 3}
   - Mood: 3
+    CatSprite: {fileID: 4271547873519928021, guid: 5ae7662cedea583439a80298268c5a2f, type: 3}
+    HandleSprite: {fileID: -4926689274043157324, guid: d27973a04c787454e8b0ab91e10447eb, type: 3}
+  - Mood: 4
     CatSprite: {fileID: 5253742257798725494, guid: 5ae7662cedea583439a80298268c5a2f, type: 3}
     HandleSprite: {fileID: 1157422761086351225, guid: d27973a04c787454e8b0ab91e10447eb, type: 3}
